@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f9f9f9"
-
-    tools:context=".MainActivity">
+    android:background="#F9f9f9"
+    tools:context=".SignUp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:id="@+id/centerline"
+        android:id="@+id/centerline2"
         android:layout_centerInParent="true"
         android:layout_height="wrap_content"/>
 
@@ -18,14 +17,14 @@
         android:layout_width="match_parent"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
-        android:layout_above="@id/centerline"
+        android:layout_above="@id/centerline2"
         android:layout_marginBottom="150dp"
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="match_parent"
-            android:text="Welcome"
+            android:text="New User"
             android:textStyle="bold"
             android:textSize="42sp"
             android:textColor="#FFBD4D"
@@ -33,7 +32,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:text="Login to continue"
+            android:text="Nice to see you here"
             android:textSize="23sp"
             android:textColor="#FF8596"
             android:layout_height="wrap_content"/>
@@ -41,7 +40,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_above="@id/centerline"
+        android:layout_above="@id/centerline2"
         android:layout_marginBottom="10dp"
         android:id="@+id/email"
         android:layout_marginRight="30dp"
@@ -49,7 +48,7 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/loginemail"
+            android:id="@+id/signupemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter your email"
@@ -60,7 +59,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_below="@id/centerline"
+        android:layout_below="@id/centerline2"
         android:layout_marginTop="10dp"
         android:id="@+id/password"
         android:layout_marginRight="30dp"
@@ -69,15 +68,14 @@
         android:layout_height="wrap_content">
 
         <EditText
-            android:id="@+id/loginpassword"
+            android:id="@+id/signuppassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter your password" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
     <RelativeLayout
-        android:id="@+id/login"
+        android:id="@+id/signup"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@id/password"
@@ -91,42 +89,24 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginStart="8dp"
-            android:text="Login"
+            android:text="Signup"
             android:textAlignment="center"
             android:textSize="16sp"
             android:textStyle="bold" />
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/gotologin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login"
+        android:layout_below="@id/signup"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="30dp"
-        android:text="Forget password?"
+        android:text="want to login?"
+        android:textSize="20sp"
         android:textAlignment="textEnd"
         android:textColor="@color/black"
         android:textStyle="bold" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/button_design"
-        android:layout_alignParentBottom="true"
-        android:layout_height="50dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:text="New user want to signIn"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:layout_marginStart="8dp"
-            android:textSize="16sp"
-            android:layout_centerInParent="true"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
 
 </RelativeLayout>

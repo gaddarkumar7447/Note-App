@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private EditText mloginemail;
@@ -47,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
                 String email = mloginemail.getText().toString().trim();
                 String password = mloginpassword.getText().toString().trim();
 
+                if (email.isEmpty() || password.isEmpty()){
+                    Toast.makeText(MainActivity.this, "All field are required", Toast.LENGTH_SHORT).show();
+                }
+                else {
+
+                }
             }
         });
     }

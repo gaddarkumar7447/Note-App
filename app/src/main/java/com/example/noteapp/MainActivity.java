@@ -1,8 +1,10 @@
 package com.example.noteapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.IntentSender;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -10,12 +12,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
     private EditText mloginemail;
     private EditText mloginpassword;
     private TextView mgotoforgetpassword;
     private RelativeLayout mlogin, mgotosignup;
-
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +35,13 @@ public class MainActivity extends AppCompatActivity {
         mgotoforgetpassword = findViewById(R.id.gotoforgetpassword);
         mlogin = findViewById(R.id.login);
         mgotosignup = findViewById(R.id.gotosingup);
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
+        if (firebaseUser != null){
+            finish();
+            startActivity(new Intent(MainActivity.this, Notes.class));
+        }
         mgotoforgetpassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,9 +66,31 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "All field are required", Toast.LENGTH_SHORT).show();
                 }
                 else {
-
+                        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()){
+                                    checkMainVerification();
+                                }
+                                else {
+                                    Toast.makeText(MainActivity.this, "Account not exits", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                 }
             }
         });
+    }
+    private void checkMainVerification(){
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        if (firebaseUser.isEmailVerified() == true){
+            Toast.makeText(this, "Logged in", Toast.LENGTH_SHORT).show();
+            finish();
+            startActivity(new Intent(MainActivity.this, Notes.class));
+        }
+        else {
+            Toast.makeText(this, "Verify email first", Toast.LENGTH_SHORT).show();
+            firebaseAuth.signOut();
+        }
     }
 }

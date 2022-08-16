@@ -8,21 +8,19 @@
     tools:context=".CreateNote">
 
     <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
         android:id="@+id/toolbarofcreatenote"
-        android:background="@color/teal_200"
-        android:layout_height="?attr/actionBarSize">
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/teal_200">
 
         <EditText
-            android:layout_width="match_parent"
-            android:paddingTop="12dp"
-            android:hint="Enter your note title here"
-            android:textColorHint="@color/black"
-            android:textSize="20sp"
             android:id="@+id/createtitleofnote"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Enter your note title here"
+            android:paddingTop="12dp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_height="match_parent"/>
+            android:textSize="20sp" />
 
     </androidx.appcompat.widget.Toolbar>
 

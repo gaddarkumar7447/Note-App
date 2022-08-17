@@ -1,11 +1,13 @@
 package com.example.noteapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.Gravity;
@@ -61,14 +63,44 @@ public class Notes extends AppCompatActivity {
         });
 
         Query query = firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("myNotes").orderBy("title", Query.Direction.ASCENDING);
-
         FirestoreRecyclerOptions<FireBaseModel> allUserNotes = new FirestoreRecyclerOptions.Builder<FireBaseModel>().setQuery(query, FireBaseModel.class).build();
-
         noteAdapter = new FirestoreRecyclerAdapter<FireBaseModel, NoteViewHolder>(allUserNotes) {
             @Override
             protected void onBindViewHolder(@NonNull NoteViewHolder holder, int position, @NonNull FireBaseModel model) {
+                ImageView popupmenu = holder.itemView.findViewById(R.id.menupopupbotton);
                 holder.noteTitle.setText(model.getTitle());
                 holder.notecontent.setText(model.getContent());
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(v.getContext(), NoteDetails.class);
+                        v.getContext().startActivity(intent);
+                    }
+                });
+                popupmenu.setOnClickListener(new View.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.M)
+                    @Override
+                    public void onClick(View v) {
+                        PopupMenu popupMenu = new PopupMenu(v.getContext(), v);
+                        popupMenu.setGravity(Gravity.END);
+                        popupMenu.getMenu().add("Edit text").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
+                                Intent intent = new Intent(v.getContext(), EditNotesActivity.class);
+                                v.getContext().startActivity(intent);
+                                return false;
+                            }
+                        });
+                        popupMenu.getMenu().add("Delete").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
+                                Toast.makeText(Notes.this, "This note delete successfully", Toast.LENGTH_SHORT).show();
+                                return false;
+                            }
+                        });
+                        popupMenu.show();
+                    }
+                });
             }
 
             @NonNull
@@ -78,6 +110,8 @@ public class Notes extends AppCompatActivity {
                 return new NoteViewHolder(view);
             }
         };
+
+
 
         mrecyclerView = findViewById(R.id.recyclerView);
         mrecyclerView.setHasFixedSize(true);

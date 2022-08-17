@@ -70,10 +70,14 @@ public class Notes extends AppCompatActivity {
                 ImageView popupmenu = holder.itemView.findViewById(R.id.menupopupbotton);
                 holder.noteTitle.setText(model.getTitle());
                 holder.notecontent.setText(model.getContent());
+                String docId = noteAdapter.getSnapshots().getSnapshot(position).getId();
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(v.getContext(), NoteDetails.class);
+                        intent.putExtra("title",model.getTitle());
+                        intent.putExtra("content",model.getContent());
+                        intent.putExtra("noteId",docId);
                         v.getContext().startActivity(intent);
                     }
                 });
@@ -87,6 +91,9 @@ public class Notes extends AppCompatActivity {
                             @Override
                             public boolean onMenuItemClick(MenuItem item) {
                                 Intent intent = new Intent(v.getContext(), EditNotesActivity.class);
+                                intent.putExtra("title",model.getTitle());
+                                intent.putExtra("content",model.getContent());
+                                intent.putExtra("noteId",docId);
                                 v.getContext().startActivity(intent);
                                 return false;
                             }
@@ -94,13 +101,26 @@ public class Notes extends AppCompatActivity {
                         popupMenu.getMenu().add("Delete").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                             @Override
                             public boolean onMenuItemClick(MenuItem item) {
-                                Toast.makeText(Notes.this, "This note delete successfully", Toast.LENGTH_SHORT).show();
+                                DocumentReference documentReference = firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("myNotes").document(docId);
+                                documentReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(Notes.this, "Notes is deleted", Toast.LENGTH_SHORT).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(Notes.this, "Failed to delete", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                                 return false;
                             }
                         });
                         popupMenu.show();
                     }
                 });
+
+
             }
 
             @NonNull
@@ -165,7 +185,7 @@ public class Notes extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         if (noteAdapter != null){
-            noteAdapter.startListening();
+            noteAdapter.stopListening();
         }
     }
 }

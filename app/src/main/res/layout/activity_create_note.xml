@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".CreateNote">
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:layout_marginTop="10dp"
+        android:id="@+id/progressbarCreateNote"
+        android:layout_height="wrap_content"/>
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarofcreatenote"
         android:layout_width="match_parent"

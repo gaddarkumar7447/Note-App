@@ -5,8 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f9f9f9"
-
     tools:context=".MainActivity">
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_below="@id/gotoforgetpassword"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        android:id="@+id/progressbarinmainactivity"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -8,6 +8,7 @@ import android.content.IntentSender;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mgotoforgetpassword;
     private RelativeLayout mlogin, mgotosignup;
     private FirebaseAuth firebaseAuth;
+    private ProgressBar mprogressbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         mgotosignup = findViewById(R.id.gotosingup);
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+        mprogressbar = findViewById(R.id.progressbarinmainactivity);
 
         if (firebaseUser != null){
             finish();
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "All field are required", Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    mprogressbar.setVisibility(View.VISIBLE);
                         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -74,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                                 else {
                                     Toast.makeText(MainActivity.this, "Account not exits", Toast.LENGTH_SHORT).show();
+                                    mprogressbar.setVisibility(View.INVISIBLE);
                                 }
                             }
                         });
@@ -89,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, Notes.class));
         }
         else {
+            mprogressbar.setVisibility(View.INVISIBLE);
             Toast.makeText(this, "Verify email first", Toast.LENGTH_SHORT).show();
             firebaseAuth.signOut();
         }

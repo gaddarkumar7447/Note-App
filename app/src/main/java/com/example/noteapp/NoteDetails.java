@@ -17,13 +17,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.Objects;
 
 public class NoteDetails extends AppCompatActivity {
+
     private TextView mtitleofNoteDetails, mcontentofNoteDetails;
     FloatingActionButton mgotoeditNote;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_details);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mtitleofNoteDetails = findViewById(R.id.titleofNoteDetails);
         mcontentofNoteDetails = findViewById(R.id.contentofNoteDetails);
         mgotoeditNote = findViewById(R.id.gotoeditNote);
@@ -33,12 +35,12 @@ public class NoteDetails extends AppCompatActivity {
         Intent data = getIntent();
         mgotoeditNote.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent =new Intent(v.getContext(), EditNotesActivity.class);
-                intent.putExtra("title", data.getStringExtra("title"));
-                intent.putExtra("content", data.getStringExtra("content"));
-                intent.putExtra("noteId", data.getStringExtra("noteId"));
-                v.getContext().startActivity(intent);
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), EditNotesActivity.class);
+                intent.putExtra("title",data.getStringExtra("title"));
+                intent.putExtra("content",data.getStringExtra("content"));
+                intent.putExtra("noteId",data.getStringExtra("noteId"));
+                view.getContext().startActivity(intent);
             }
         });
 

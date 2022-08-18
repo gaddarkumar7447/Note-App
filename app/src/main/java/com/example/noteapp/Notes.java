@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -71,16 +72,19 @@ public class Notes extends AppCompatActivity {
                 holder.noteTitle.setText(model.getTitle());
                 holder.notecontent.setText(model.getContent());
                 String docId = noteAdapter.getSnapshots().getSnapshot(position).getId();
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                /*holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(v.getContext(), NoteDetails.class);
                         intent.putExtra("title",model.getTitle());
                         intent.putExtra("content",model.getContent());
                         intent.putExtra("noteId",docId);
+                        Toast.makeText(Notes.this, "clicked", Toast.LENGTH_SHORT).show();
                         v.getContext().startActivity(intent);
+
                     }
-                });
+                });*/
+
                 popupmenu.setOnClickListener(new View.OnClickListener() {
                     @RequiresApi(api = Build.VERSION_CODES.M)
                     @Override
@@ -98,6 +102,7 @@ public class Notes extends AppCompatActivity {
                                 return false;
                             }
                         });
+
                         popupMenu.getMenu().add("Delete").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                             @Override
                             public boolean onMenuItemClick(MenuItem item) {
@@ -119,8 +124,6 @@ public class Notes extends AppCompatActivity {
                         popupMenu.show();
                     }
                 });
-
-
             }
 
             @NonNull
@@ -130,8 +133,6 @@ public class Notes extends AppCompatActivity {
                 return new NoteViewHolder(view);
             }
         };
-
-
 
         mrecyclerView = findViewById(R.id.recyclerView);
         mrecyclerView.setHasFixedSize(true);
@@ -149,6 +150,7 @@ public class Notes extends AppCompatActivity {
             noteTitle = itemView.findViewById(R.id.noteTitles);
             notecontent = itemView.findViewById(R.id.notecontent);
             mnote = itemView.findViewById(R.id.note);
+
         }
     }
 

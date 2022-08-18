@@ -19,7 +19,7 @@
         android:id="@+id/toolbarofcreatenote"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/teal_200">
+        android:background="#435EF4">
 
         <EditText
             android:id="@+id/createtitleofnote"
@@ -45,15 +45,16 @@
         android:textSize="15sp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
         android:id="@+id/savenote"
-        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="30dp"
         android:src="@drawable/ic_baseline_save_24"
         app:maxImageSize="40dp"
-        android:layout_gravity="bottom|end"
-        android:layout_height="match_parent"/>
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </RelativeLayout>

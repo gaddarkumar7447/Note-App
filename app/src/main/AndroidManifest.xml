@@ -16,13 +16,12 @@
         android:theme="@style/Theme.NoteApp"
         tools:targetApi="31">
         <activity
-            android:name=".NoteDetails"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:name=".NoteDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".EditNotesActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".CreateNote"
             android:exported="false"

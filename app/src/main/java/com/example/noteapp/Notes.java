@@ -72,18 +72,19 @@ public class Notes extends AppCompatActivity {
                 holder.noteTitle.setText(model.getTitle());
                 holder.notecontent.setText(model.getContent());
                 String docId = noteAdapter.getSnapshots().getSnapshot(position).getId();
-                /*holder.itemView.setOnClickListener(new View.OnClickListener() {
+
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(v.getContext(), NoteDetails.class);
+                        Intent intent = new Intent(v.getContext(), NoteDetailsActivity.class);
                         intent.putExtra("title",model.getTitle());
                         intent.putExtra("content",model.getContent());
                         intent.putExtra("noteId",docId);
-                        Toast.makeText(Notes.this, "clicked", Toast.LENGTH_SHORT).show();
                         v.getContext().startActivity(intent);
 
                     }
-                });*/
+                });
 
                 popupmenu.setOnClickListener(new View.OnClickListener() {
                     @RequiresApi(api = Build.VERSION_CODES.M)

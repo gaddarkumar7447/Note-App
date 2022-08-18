@@ -56,7 +56,6 @@ public class EditNotesActivity extends AppCompatActivity {
                 String newContent = meditcontentofnote.getText().toString();
                 if(newTitle.isEmpty() || newContent.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Title or Note cannot be empty", Toast.LENGTH_SHORT).show();
-                    return;
                 } else {
                     DocumentReference documentReference = firebaseFirestore.collection("notes").document(firebaseUser.getUid()).collection("myNotes").document(data.getStringExtra("noteId"));
                     Map<String, Object> note = new HashMap<>();

@@ -24,7 +24,7 @@ import java.util.Locale;
 public class SignUp extends AppCompatActivity {
     private EditText msingupemail;
     private EditText msinguppassword;
-    private RelativeLayout msignup;
+    private TextView msignup;
     private TextView mgotologin;
 
     private FirebaseAuth firebaseAuth;

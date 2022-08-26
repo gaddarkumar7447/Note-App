@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbarofcreatenote"
-        android:background="#C29191"
+        android:background="#B0B3B8"
         android:gravity="top|left"
         android:hint="Enter your notes here"
         android:padding="15dp"

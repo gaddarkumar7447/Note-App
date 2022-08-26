@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbarofeditnote"
-        android:background="#C29191"
+        android:background="#B0B3B8"
         android:gravity="top|left"
         android:padding="15dp"
         android:textColor="@color/black"

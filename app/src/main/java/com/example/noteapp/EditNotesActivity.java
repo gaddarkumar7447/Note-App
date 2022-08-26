@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,6 +23,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import io.grpc.Context;
 
 public class EditNotesActivity extends AppCompatActivity {
     private EditText medittileofnote, meditcontentofnote;
@@ -38,6 +41,7 @@ public class EditNotesActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbarofeditnote);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getWindow().setStatusBarColor(ContextCompat.getColor(EditNotesActivity.this, R.color.EditNotes));
 
         FirebaseAuth firebaseAuth;
         FirebaseFirestore firebaseFirestore;

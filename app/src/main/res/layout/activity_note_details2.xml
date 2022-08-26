@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6CACA"
+    android:background="#B0B3B8"
     tools:context=".NoteDetailsActivity">
 
     <androidx.appcompat.widget.Toolbar

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -25,6 +26,7 @@ public class NoteDetailsActivity extends AppCompatActivity {
 
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().hide();
+        getWindow().setStatusBarColor(ContextCompat.getColor(NoteDetailsActivity.this,R.color.NoteDetails));
         mtitleofNoteDetails = findViewById(R.id.titleofNoteDetail);
         mcontentofNoteDetails = findViewById(R.id.contentofNoteDetails);
         mgotoeditNote = findViewById(R.id.gotoeditNote);

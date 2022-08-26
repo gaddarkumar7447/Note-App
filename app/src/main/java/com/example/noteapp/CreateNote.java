@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -24,6 +25,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import io.grpc.Context;
 
 public class CreateNote extends AppCompatActivity {
     EditText mcreatetitleofnote, mcreatecontentofnote;
@@ -37,6 +40,7 @@ public class CreateNote extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
+        getWindow().setStatusBarColor(ContextCompat.getColor(CreateNote.this,R.color.CreateNode));
         mcreatecontentofnote = findViewById(R.id.createcontentofnote);
         mcreatetitleofnote = findViewById(R.id.createtitleofnote);
         msavenote = findViewById(R.id.savenote);

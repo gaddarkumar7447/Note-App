@@ -4,11 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.2930253623188406" />
+        <entry key="app/src/main/res/drawable/blue_border_rounded.xml" value="0.3265" />
+        <entry key="app/src/main/res/drawable/blue_filled.xml" value="0.3265" />
         <entry key="app/src/main/res/drawable/button_design.xml" value="0.335" />
+        <entry key="app/src/main/res/drawable/cursor_color.xml" value="0.3265" />
         <entry key="app/src/main/res/layout/activity_create_note.xml" value="0.3278985507246377" />
         <entry key="app/src/main/res/layout/activity_edit_notes.xml" value="0.3278985507246377" />
         <entry key="app/src/main/res/layout/activity_forget_password.xml" value="0.3278985507246377" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.31875" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_note_details.xml" value="0.3278985507246377" />
         <entry key="app/src/main/res/layout/activity_note_details2.xml" value="0.3328804347826087" />
         <entry key="app/src/main/res/layout/activity_notes.xml" value="0.3278985507246377" />

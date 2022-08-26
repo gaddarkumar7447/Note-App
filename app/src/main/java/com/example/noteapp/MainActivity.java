@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText mloginemail;
     private EditText mloginpassword;
     private TextView mgotoforgetpassword;
-    private RelativeLayout mlogin, mgotosignup;
+    //private RelativeLayout mlogin, mgotosignup;
+    private TextView mlogin, mgotosignup;
     private FirebaseAuth firebaseAuth;
     private ProgressBar mprogressbar;
 
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         getSupportActionBar().hide();
         mloginemail = findViewById(R.id.loginemail);
         mloginpassword = findViewById(R.id.loginpassword);

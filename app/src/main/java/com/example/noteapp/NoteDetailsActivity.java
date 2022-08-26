@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
@@ -15,16 +16,26 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class NoteDetailsActivity extends AppCompatActivity {
     private TextView mtitleofNoteDetails, mcontentofNoteDetails;
     FloatingActionButton mgotoeditNote;
+    ImageView mbackButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note_details2);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().hide();
         mtitleofNoteDetails = findViewById(R.id.titleofNoteDetail);
         mcontentofNoteDetails = findViewById(R.id.contentofNoteDetails);
         mgotoeditNote = findViewById(R.id.gotoeditNote);
+        mbackButton = findViewById(R.id.backBotton);
+
+        mbackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
 

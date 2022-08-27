@@ -14,11 +14,10 @@ Android app to take quick notes in phone with the security of user authenticatio
 ###### Android
 ## Screenshots
 
-![screen](https://user-images.githubusercontent.com/74999138/187045809-7ebfb461-fdbb-4289-9483-d5c47d0ec13d.jpg)
 
-![screen_1](https://user-images.githubusercontent.com/74999138/187045553-39f7f48d-79b3-4697-9f2c-acdd3915a093.jpg)
-
-![screen_2](https://user-images.githubusercontent.com/74999138/187045709-5cffc667-8907-4794-8897-4988a3d57b83.jpg)
+<img width="400" height="762" src="https://user-images.githubusercontent.com/74999138/187046816-03760a28-f0cc-4bfb-a773-38305b093429.png"/>
+<img width="400" height="762" src="https://user-images.githubusercontent.com/74999138/187046772-d674ab8c-2267-4b70-b560-8f3ae752baba.png"/>
+<img width="400" height="762" src="https://user-images.githubusercontent.com/74999138/187046850-2b5cecee-2ba4-403c-b8e4-147d688b2825.png"/>
 
 
 ## General Features

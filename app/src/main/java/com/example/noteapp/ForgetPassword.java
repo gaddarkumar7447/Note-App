@@ -43,7 +43,8 @@ public class ForgetPassword extends AppCompatActivity {
             public void onClick(View v) {
                 String mail = mforgetPassword.getText().toString().trim();
                 if (mail.isEmpty()){
-                    Toast.makeText(ForgetPassword.this, "Enter your mail", Toast.LENGTH_SHORT).show();
+                    mforgetPassword.setError("email is empty");
+//                    Toast.makeText(ForgetPassword.this, "Enter your mail", Toast.LENGTH_SHORT).show();
                 }else {
                     // we have to send password recover email
                     firebaseAuth.sendPasswordResetEmail(mail).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -55,7 +56,7 @@ public class ForgetPassword extends AppCompatActivity {
                                 startActivity(new Intent(ForgetPassword.this, MainActivity.class));
                             }
                             else {
-                                Toast.makeText(ForgetPassword.this, "Main not exits", Toast.LENGTH_SHORT).show();
+                                mforgetPassword.setError("Mail not exits");
                             }
                         }
                     });

@@ -4,9 +4,7 @@ public class FireBaseModel{
         private String title;
         private String content;
 
-    public FireBaseModel() {
-
-    }
+    public FireBaseModel() {}
 
     public FireBaseModel(String title, String content) {
         this.title = title;

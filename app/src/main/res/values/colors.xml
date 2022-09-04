@@ -11,4 +11,5 @@
     <color name="CreateNode">#435EF4</color>
     <color name="EditNotes">#249CB1</color>
     <color name="NotesShow">#B0B3B8</color>
+    <color name="back">#353333</color>
 </resources>

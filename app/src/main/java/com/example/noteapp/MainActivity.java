@@ -67,8 +67,12 @@ public class MainActivity extends AppCompatActivity {
                 String email = mloginemail.getText().toString().trim();
                 String password = mloginpassword.getText().toString().trim();
 
-                if (email.isEmpty() || password.isEmpty()){
-                    Toast.makeText(MainActivity.this, "All field are required", Toast.LENGTH_SHORT).show();
+                if (email.isEmpty()){
+                    mloginemail.setError("Email is empty");
+//                    Toast.makeText(MainActivity.this, "All field are required", Toast.LENGTH_SHORT).show();
+                }
+                else if (password.isEmpty()){
+                    mloginpassword.setError("password is empty");
                 }
                 else {
                     mprogressbar.setVisibility(View.VISIBLE);
@@ -79,7 +83,8 @@ public class MainActivity extends AppCompatActivity {
                                     checkMainVerification();
                                 }
                                 else {
-                                    Toast.makeText(MainActivity.this, "Account not exits", Toast.LENGTH_SHORT).show();
+                                    mloginemail.setError("Email is not exits");
+                                    mloginpassword.setError("password is not exits");
                                     mprogressbar.setVisibility(View.INVISIBLE);
                                 }
                             }

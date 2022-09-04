@@ -52,10 +52,11 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
                 String emainl = msingupemail.getText().toString().trim();
                 String password = msinguppassword.getText().toString().trim();
-                if (emainl.isEmpty() || password.isEmpty()){
-                    Toast.makeText(SignUp.this, "Both fields are required", Toast.LENGTH_SHORT).show();
-                }else if (password.length() < 7){
-                    Toast.makeText(SignUp.this, "Password should greater than 7 digit", Toast.LENGTH_SHORT).show();
+                if (emainl.isEmpty()){
+                    msingupemail.setError("email is empty");
+                }
+                else if (password.length() < 7){
+                    msinguppassword.setError("password should greater than 7 digit");
                 }
                 else {
                     // Registered email to firebase

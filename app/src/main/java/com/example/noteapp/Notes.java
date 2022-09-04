@@ -53,8 +53,8 @@ public class Notes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
         getSupportActionBar().setTitle("All Notes");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.NotesShow)));
-        getWindow().setStatusBarColor(ContextCompat.getColor(Notes.this,R.color.NotesShow));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.back)));
+        getWindow().setStatusBarColor(ContextCompat.getColor(Notes.this,R.color.back));
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -78,7 +78,6 @@ public class Notes extends AppCompatActivity {
                 holder.notecontent.setText(model.getContent());
                 String docId = noteAdapter.getSnapshots().getSnapshot(position).getId();
 
-
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -87,7 +86,6 @@ public class Notes extends AppCompatActivity {
                         intent.putExtra("content",model.getContent());
                         intent.putExtra("noteId",docId);
                         v.getContext().startActivity(intent);
-
                     }
                 });
 
@@ -156,7 +154,6 @@ public class Notes extends AppCompatActivity {
             noteTitle = itemView.findViewById(R.id.noteTitles);
             notecontent = itemView.findViewById(R.id.notecontent);
             mnote = itemView.findViewById(R.id.note);
-
         }
     }
 

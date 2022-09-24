@@ -22,12 +22,10 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Locale;
 
 public class SignUp extends AppCompatActivity {
-    private EditText msingupemail;
-    private EditText msinguppassword;
-    private TextView msignup;
-    private TextView mgotologin;
-
+    private EditText msingupemail, msinguppassword;
+    private TextView msignup, mgotologin;
     private FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +48,9 @@ public class SignUp extends AppCompatActivity {
         msignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String emainl = msingupemail.getText().toString().trim();
+                String email = msingupemail.getText().toString().trim();
                 String password = msinguppassword.getText().toString().trim();
-                if (emainl.isEmpty()){
+                if (email.isEmpty()){
                     msingupemail.setError("email is empty");
                 }
                 else if (password.length() < 7){
@@ -60,7 +58,7 @@ public class SignUp extends AppCompatActivity {
                 }
                 else {
                     // Registered email to firebase
-                    firebaseAuth.createUserWithEmailAndPassword(emainl,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             // isCompleted to isSuccessfully
@@ -77,6 +75,7 @@ public class SignUp extends AppCompatActivity {
             }
         });
     }
+
     private void sendEmailVerification(){
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if (firebaseUser != null){

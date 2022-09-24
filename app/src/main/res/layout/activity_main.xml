@@ -40,18 +40,18 @@
                 android:id="@+id/loginemail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
                 android:background="@android:color/transparent"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
+                android:paddingLeft="17dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
-                android:paddingLeft="17dp"
-                android:layout_marginLeft="17dp"
-                android:paddingBottom="15dp"
                 android:textCursorDrawable="@drawable/cursor_color"
-                android:textSize="15sp"
-                android:paddingTop="15dp" />
+                android:textSize="15sp" />
 
             <ImageView
                 android:layout_width="18.7dp"

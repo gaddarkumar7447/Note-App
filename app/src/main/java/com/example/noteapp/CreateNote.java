@@ -25,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import io.grpc.Context;
 
@@ -41,12 +42,13 @@ public class CreateNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_note);
         getWindow().setStatusBarColor(ContextCompat.getColor(CreateNote.this,R.color.CreateNode));
+
         mcreatecontentofnote = findViewById(R.id.createcontentofnote);
         mcreatetitleofnote = findViewById(R.id.createtitleofnote);
         msavenote = findViewById(R.id.savenote);
         Toolbar toolbar = findViewById(R.id.toolbarofcreatenote);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         mprogressbar = findViewById(R.id.progressbarCreateNote);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -85,8 +87,8 @@ public class CreateNote extends AppCompatActivity {
                 }
             }
         });
-
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

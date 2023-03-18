@@ -10,8 +10,8 @@ Android app to take quick notes in phone with the security of user authenticatio
 - FireBase
 - XML
 
+[Want to try](https://appetize.io/app/6ftvzrx2j5rjuaryedzdseqi5u?device=pixel4&osVersion=11.0&scale=75)
 
-###### Android
 ## Screenshots
 
 <p align="center">

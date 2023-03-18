@@ -58,8 +58,8 @@ public class CreateNote extends AppCompatActivity {
         msavenote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String title = mcreatetitleofnote.getText().toString();
-                String content = mcreatecontentofnote.getText().toString();
+                String title = mcreatetitleofnote.getText().toString().trim();
+                String content = mcreatecontentofnote.getText().toString().trim();
                 if (title.isEmpty() || content.isEmpty()){
                     Toast.makeText(CreateNote.this, "Both field are required", Toast.LENGTH_SHORT).show();
                 }
@@ -98,4 +98,9 @@ public class CreateNote extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(CreateNote.this, Notes.class));
+        finish();
+    }
 }

@@ -23,6 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import io.grpc.Context;
 
@@ -40,7 +41,7 @@ public class EditNotesActivity extends AppCompatActivity {
         msaveeditnote = findViewById(R.id.saveeditnote);
         toolbar = findViewById(R.id.toolbarofeditnote);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getWindow().setStatusBarColor(ContextCompat.getColor(EditNotesActivity.this, R.color.EditNotes));
 
         FirebaseAuth firebaseAuth;
@@ -56,8 +57,8 @@ public class EditNotesActivity extends AppCompatActivity {
         msaveeditnote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String newTitle = medittileofnote.getText().toString();
-                String newContent = meditcontentofnote.getText().toString();
+                String newTitle = medittileofnote.getText().toString().trim();
+                String newContent = meditcontentofnote.getText().toString().trim();
                 if(newTitle.isEmpty() || newContent.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Title or Note cannot be empty", Toast.LENGTH_SHORT).show();
                 } else {
@@ -86,7 +87,6 @@ public class EditNotesActivity extends AppCompatActivity {
         String notecontent = data.getStringExtra("content");
         medittileofnote.setText(noteTitle);
         meditcontentofnote.setText(notecontent);
-
     }
 
     @Override
@@ -95,5 +95,11 @@ public class EditNotesActivity extends AppCompatActivity {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(EditNotesActivity.this, Notes.class));
+        finish();
     }
 }

@@ -2,17 +2,21 @@ package com.example.noteapp;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
+
+import com.example.noteapp.login.MainActivity;
+import com.example.noteapp.login.SignUp;
+
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,7 +29,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.example.noteapp.model.FireBaseModel;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -35,10 +39,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirestoreRegistrar;
 import com.google.firebase.firestore.Query;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.firestore.Query;
+
+import java.util.Objects;
+
 public class Notes extends AppCompatActivity {
     private FloatingActionButton mfloatingActionButton;
     private FirebaseAuth firebaseAuth;
@@ -52,7 +56,7 @@ public class Notes extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
-        getSupportActionBar().setTitle("All Notes");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("All Notes");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.back)));
         getWindow().setStatusBarColor(ContextCompat.getColor(Notes.this,R.color.back));
 
@@ -140,14 +144,14 @@ public class Notes extends AppCompatActivity {
 
         mrecyclerView = findViewById(R.id.recyclerView);
         mrecyclerView.setHasFixedSize(true);
-        staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, staggeredGridLayoutManager.VERTICAL);
+        staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mrecyclerView.setLayoutManager(staggeredGridLayoutManager);
         mrecyclerView.setAdapter(noteAdapter);
 
     }
-    public class NoteViewHolder extends RecyclerView.ViewHolder{
-        private TextView noteTitle;
-        private TextView notecontent;
+    public static class NoteViewHolder extends RecyclerView.ViewHolder{
+        private final TextView noteTitle;
+        private final TextView notecontent;
         LinearLayout mnote;
         public NoteViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -163,6 +167,7 @@ public class Notes extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -192,5 +197,23 @@ public class Notes extends AppCompatActivity {
         if (noteAdapter != null){
             noteAdapter.stopListening();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("You want to exit the app");
+        alertDialog.setIcon(R.drawable.logo_splash);
+        alertDialog.setCancelable(false);
+        alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finishAffinity();
+            }
+        });
+        alertDialog.setNegativeButton("Cancel", null);
+        alertDialog.create();
+        alertDialog.show();
     }
 }

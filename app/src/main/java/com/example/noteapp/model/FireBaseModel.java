@@ -1,4 +1,4 @@
-package com.example.noteapp;
+package com.example.noteapp.model;
 
 public class FireBaseModel{
         private String title;

@@ -1,23 +1,27 @@
-package com.example.noteapp;
+package com.example.noteapp.login;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.noteapp.Notes;
+import com.example.noteapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private EditText mloginemail;
@@ -32,12 +36,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         mloginemail = findViewById(R.id.loginemail);
         mloginpassword = findViewById(R.id.loginpassword);
         mgotoforgetpassword = findViewById(R.id.gotoforgetpassword);
         mlogin = findViewById(R.id.login);
         mgotosignup = findViewById(R.id.gotosingup);
+
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         mprogressbar = findViewById(R.id.progressbarinmainactivity);
@@ -104,5 +109,23 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Verify email first", Toast.LENGTH_SHORT).show();
             firebaseAuth.signOut();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("You want to exit the app");
+        alertDialog.setIcon(R.drawable.logo_splash);
+        alertDialog.setCancelable(false);
+        alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finishAffinity();
+            }
+        });
+        alertDialog.setNegativeButton("Cancel", null);
+        alertDialog.create();
+        alertDialog.show();
     }
 }

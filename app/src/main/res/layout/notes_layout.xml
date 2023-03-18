@@ -59,11 +59,9 @@
                 android:text="This is code which appear here"
                 android:textSize="15sp"
                 android:textColor="@color/black"
-
                 android:layout_height="wrap_content"/>
 
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 
 </RelativeLayout>
